@@ -1,6 +1,6 @@
 # Peripheral Blood Nuclear Cells (PBMCs) Cell-Type Classification
 
-Single-cell RNA sequencing technology quantifies transcriptomic expressions at single-cell level, leading to discoveries rooted in cell-to-cell heterogeneity. Cell-type classification, or assignment of cell type labels to single cells, is an important step in analyzing the RNA sequencing data. For example, correctly identifying cells within the tumor microenvironment can provide oncologists with a snapshot of how a patient’s immune system reacts to the tumor.
+Single-cell RNA sequencing (scRNA-seq) allows for the profiling of gene expression at single-cell resolution. It has the potential to uncover rare cell populations, reveal regulatory relationships between genes, and track the trajectories of distinct cell lineages across development. Cell-type classification is a critical step in analyzing the scRNA-sequencing data. For instance, understanding the cells that make up the tumor microenvironment can inform clinicians how a patient’s immune system may react to various therapeutic strategies. In this study our goal is to develop a machine learning-based classifier for single-cell cell-type classification of peripheral blood mononuclear cells (PBMCs) and conduct various ablation experiments. 
 
 ## Data ##
 In order to run these analyses you will need to download the following data
@@ -19,18 +19,18 @@ All of the data were processed by the Cell Ranger 1.1 pipeline. The processed da
 ## Pre-processing ##
 
 ~~~
-    preprocess.R [-h] [-v] [--id] file_prefix [--data_dir] /path/to/data_dir [--figure_dir] /path/to/figure_dir
+    Rscript preprocess.R [-h] [-v] [--id] file_prefix [--data_dir] /path/to/data_dir [--figure_dir] /path/to/figure_dir
 ~~~
 
 ## Models ##
  
 ~~~
-    build_model.R [-h] [-v] [--genes] genes [--size] size [--model] rf_default [--data_dir] /path/to/data_dir [--results_dir] /path/to/results_dir
+    Rscript build_model.R [-h] [-v] [--genes] genes [--size] size [--model] rf_default [--data_dir] /path/to/data_dir [--results_dir] /path/to/results_dir
 ~~~
 
 ## Evaluation & Visualization ##
 
 ~~~
-    compute_metrics.R [-h] [-v] [--file] filename_of_model [--data_dir] /path/to/data_dir [--results_dir] /path/to/results_dir
-    plot_tsne.R [-h] [-v] [--file] filename_of_model [--data_dir] /path/to/data_dir
+    Rscript compute_metrics.R [-h] [-v] [--file] filename_of_model [--data_dir] /path/to/data_dir [--results_dir] /path/to/results_dir
+    Rscript plot_tsne.R [-h] [-v] [--file] filename_of_model [--data_dir] /path/to/data_dir
 ~~~ 
