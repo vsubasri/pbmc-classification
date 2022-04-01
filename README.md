@@ -6,6 +6,7 @@ Single-cell RNA sequencing technology quantifies transcriptomic expressions at s
 In order to run these analyses you will need to download the following data
 
 Training Set: scRNA-seq data of bead-enriched sub-populations of PBMCs from Donor A 
+
 Test Set: scRNA-seq data of 68k PBMCs from Donor A
 
 All of the data were processed by the Cell Ranger 1.1 pipeline. The processed data used for the single cell RNA-seq secondary analysis are stored in three R data files:
@@ -18,17 +19,18 @@ All of the data were processed by the Cell Ranger 1.1 pipeline. The processed da
 ## Pre-processing ##
 
 ~~~
-    preprocess.R
+    preprocess.R [-h] [-v] [--id] file_prefix [--data_dir] /path/to/data_dir [--figure_dir] /path/to/figure_dir
 ~~~
 
 ## Models ##
  
 ~~~
-    model.R
+    build_model.R [-h] [-v] [--genes] genes [--size] size [--model] rf_default [--data_dir] /path/to/data_dir [--results_dir] /path/to/results_dir
 ~~~
 
-## Visualization ##
+## Evaluation & Visualization ##
 
 ~~~
-    plot.R
+    compute_metrics.R [-h] [-v] [--file] filename_of_model [--data_dir] /path/to/data_dir [--results_dir] /path/to/results_dir
+    plot_tsne.R [-h] [-v] [--file] filename_of_model [--data_dir] /path/to/data_dir
 ~~~ 
