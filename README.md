@@ -1,4 +1,4 @@
-# Peripheral Blood Nuclear Cells (PBMCs) Cell-Type Classification
+# Peripheral Blood Nuclear Cells (PBMCs) cell-type classification using scRNA-sequencing data 
 
 Single-cell RNA sequencing (scRNA-seq) allows for the profiling of gene expression at single-cell resolution. It has the potential to uncover rare cell populations, reveal regulatory relationships between genes, and track the trajectories of distinct cell lineages across development. Cell-type classification is a critical step in analyzing the scRNA-sequencing data. For instance, understanding the cells that make up the tumor microenvironment can inform clinicians how a patient’s immune system may react to various therapeutic strategies. In this study our goal is to develop a machine learning-based classifier for single-cell cell-type classification of peripheral blood mononuclear cells (PBMCs) and conduct various ablation experiments. 
 
@@ -19,18 +19,32 @@ All of the data were processed by the Cell Ranger 1.1 pipeline. The processed da
 ## Pre-processing ##
 
 ~~~
-    Rscript preprocess.R [-h] [-v] [--id] file_prefix [--data_dir] /path/to/data_dir [--figure_dir] /path/to/figure_dir
+    Rscript preprocess.R [-h] [-v] \
+        [--id] file_prefix \
+        [--data_dir] /path/to/data_dir \
+        [--figure_dir] /path/to/figure_dir
 ~~~
 
 ## Models ##
  
 ~~~
-    Rscript build_model.R [-h] [-v] [--genes] genes [--size] size [--model] rf_default [--data_dir] /path/to/data_dir [--results_dir] /path/to/results_dir
+    Rscript build_model.R [-h] [-v] \
+        [--genes] e.g. "100", "diff1k", "all" \
+        [--size] e.g.  "1k", "2500", "all"\
+        [--model] e.g. "rf_default", "rf_tuned", "glm", "svmLinear", "svmRadial" \
+        [--data_dir] /path/to/data_dir \
+        [--results_dir] /path/to/results_dir
 ~~~
 
 ## Evaluation & Visualization ##
 
 ~~~
-    Rscript compute_metrics.R [-h] [-v] [--file] filename_of_model [--data_dir] /path/to/data_dir [--results_dir] /path/to/results_dir
-    Rscript plot_tsne.R [-h] [-v] [--file] filename_of_model [--data_dir] /path/to/data_dir
+    Rscript compute_metrics.R [-h] [-v] \
+        [--file] filename_of_model \
+        [--data_dir] /path/to/data_dir \
+        [--results_dir] /path/to/results_dir
+        
+    Rscript plot_tsne.R [-h] [-v] \
+        [--file] filename_of_model \
+        [--data_dir] /path/to/data_dir
 ~~~ 
