@@ -34,7 +34,7 @@ rf_tuned <- function(dir,id,genes,size,model,x_train,y_train,x_test) {
               trace = TRUE,
               improve = 0.05)
 
-	      # fit tuned rf
+	# fit tuned rf
 	file <- file.path(dir,paste0(id,'_tuned.rds'))
 	tuned_rf <- randomForest(x=x_train,
                          y=y_train,
@@ -59,7 +59,7 @@ svm_linear <- function(dir,id,genes,size,x_train,y_train,x_test) {
 		file = file.path(dir,paste(id,genes,size,c,'svmLinear.rds',collapse="_"))
   		if (file.exists(file)) {
     			model = readRDS(file)
-	} else { 
+		} else { 
     		model <- svm(x_train, 
                      y_train,
                      kernal="linear",
@@ -70,6 +70,7 @@ svm_linear <- function(dir,id,genes,size,x_train,y_train,x_test) {
     		y_class <- predict(model, x_test)
     		saveRDS(list(model,y_pred,y_class),file)
 		return(list(model,y_pred,y_class))
+		}
   	}  
 }
 
