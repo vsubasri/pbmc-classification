@@ -18,6 +18,8 @@ All of the data were processed by the Cell Ranger 1.1 pipeline. The processed da
 
 ## Pre-processing ##
 
+This script is used to generate the data sets used for model building.
+
 ~~~
     Rscript preprocess.R [-h] [-v] \
         [--id] file_prefix \
@@ -27,6 +29,8 @@ All of the data were processed by the Cell Ranger 1.1 pipeline. The processed da
 
 ## Models ##
  
+This script is used to train a model (random forest, generalized linear model or support vector machine) and predict on the PBMC68K dataset.
+
 ~~~
     Rscript build_model.R [-h] [-v] \
         [--genes] e.g. "100", "diff1k", "all" \
@@ -37,6 +41,8 @@ All of the data were processed by the Cell Ranger 1.1 pipeline. The processed da
 ~~~
 
 ## Evaluation & Visualization ##
+
+These scripts are used to compute performance metrics and plot results.
 
 ~~~
     Rscript compute_metrics.R [-h] [-v] \
